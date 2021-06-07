@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>App</title>
+</head>
+<body>
+  <button>Call server</button>
+
+  <pre style="background: #f7f7f7; padding: 12px; border-radius: 12; box-shadow: 0 1.5px 3px rgba(0,0,0,0.15);">
+
+  </pre>
+
+
+  <script>
+    const getJSON = r => r.json()
+    const updatePre = text => document.querySelector('pre').innerText = JSON.stringify(text)
+    
+    document.querySelector('button').addEventListener('click', () => 
+      fetch('http://localhost:3000/list')
+        .then(getJSON)
+        .then(JSON.stringify)
+        .then(updatePre)
+        .catch(console.error)
+    )
+  </script>
+</body>
+</html>
